@@ -25,7 +25,7 @@ function App() {
     const refs: React.RefObject<HTMLInputElement>[] = [];
 
     if (!formData.name || (formData.name && formData.name.length < 6)) {
-      setErrors((errors) => ({...errors, name: 'Min name length 6 charachters'}))
+      setErrors((errors) => ({...errors, name: 'Min name length 6 characters'}))
       valid = false;
       refs.push(nameRef);
     } else {
@@ -41,7 +41,7 @@ function App() {
     }
 
     if (!formData.password || (formData.password && formData.password.length < 6)) {
-      setErrors((errors) => ({...errors, password: 'Min password length 6 charachters'}))
+      setErrors((errors) => ({...errors, password: 'Min password length 6 characters'}))
       valid = false;
       refs.push(passwordRef);
     } else {
