@@ -3,7 +3,7 @@ import './App.css'
 
 function App() {
 
-  const [formData, setFormData] = useState({
+  const [auth, setAuth] = useState({
     name: '',
     email: '',
     password: '',
@@ -16,6 +16,8 @@ function App() {
     password: ''
   });
 
+  const [success, setSuccess] = useState(false);
+
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -24,7 +26,7 @@ function App() {
     let valid = true;
     const refs: React.RefObject<HTMLInputElement>[] = [];
 
-    if (!formData.name || (formData.name && formData.name.length < 6)) {
+    if (!auth.name || (auth.name && auth.name.length < 6)) {
       setErrors((errors) => ({...errors, name: 'Min name length 6 characters'}))
       valid = false;
       refs.push(nameRef);
@@ -32,7 +34,7 @@ function App() {
       setErrors((errors) => ({...errors, name: ''}))
     }
 
-    if (!formData.email || (formData.email && !formData.email.includes('@'))) {
+    if (!auth.email || (auth.email && !auth.email.includes('@'))) {
       setErrors((errors) => ({...errors, email: 'Email is not valid'}))
       valid = false;
       refs.push(emailRef);
@@ -40,7 +42,7 @@ function App() {
       setErrors((errors) => ({...errors, email: ''}))
     }
 
-    if (!formData.password || (formData.password && formData.password.length < 6)) {
+    if (!auth.password || (auth.password && auth.password.length < 6)) {
       setErrors((errors) => ({...errors, password: 'Min password length 6 characters'}))
       valid = false;
       refs.push(passwordRef);
@@ -59,12 +61,12 @@ function App() {
     event.preventDefault();
     if (handleValidation()) {
       clearForm()
-      alert("Success")
+      setSuccess(true)
     }
   }
 
   const clearForm = () => {
-    setFormData({
+    setAuth({
       name: '',
       email: '',
       password: '',
@@ -78,10 +80,10 @@ function App() {
         <div>
           <label htmlFor="name">
             Name:&nbsp;
-            <input onChange={(e) => setFormData({...formData, name: e.target.value})} required
+            <input onChange={(e) => setAuth({...auth, name: e.target.value})} required
             ref={nameRef}
             name="name"
-            value={formData.name}
+            value={auth.name}
             placeholder="name" />
             {errors.name && <p style={{ color: 'red' }}>{errors.name}</p>}
           </label>
@@ -89,11 +91,11 @@ function App() {
         <div>
           <label htmlFor="email">
             Email:&nbsp;
-            <input onChange={(e) => setFormData({...formData, email: e.target.value})} required
+            <input onChange={(e) => setAuth({...auth, email: e.target.value})} required
             ref={emailRef}
             type="email"
             name="email"
-            value={formData.email}
+            value={auth.email}
             placeholder="example@mail.com" />
             {errors.email && <p style={{ color: 'red' }}>{errors.email}</p>}
           </label>
@@ -101,11 +103,11 @@ function App() {
         <div>
           <label htmlFor="password">
             Password:&nbsp;
-          <input onChange={(e) => setFormData({...formData, password: e.target.value})} required
+            <input onChange={(e) => setAuth({...auth, password: e.target.value})} required
             ref={passwordRef}
             type="password"
             name="password"
-            value={formData.password}
+            value={auth.password}
             placeholder="password" />
            {errors.password && <p style={{ color: 'red' }}>{errors.password}</p>}
           </label>
@@ -113,15 +115,19 @@ function App() {
         <div>
           <label htmlFor="accept">
             Accept Terms:&nbsp;
-          <input onChange={(e) => setFormData({...formData, accept: e.target.checked})} required
+            <input onChange={(e) => {
+              setSuccess(false)
+              setAuth({...auth, accept: e.target.checked})}
+            } required
             type="checkbox"
-            checked={formData.accept}
+            checked={auth.accept}
             name="accept"
             id="accept"/>
           </label>
         </div>
+        {success && <p style={{ color: 'green' }}>Submited</p>}
         <div>
-          <button disabled={!formData.accept} type="submit">Submit</button>
+          <button disabled={!auth.accept} type="submit">Submit</button>
         </div>
       </form>
     </div>
