@@ -1,7 +1,7 @@
 import {useRef, useState } from 'react';
-import './App.css'
+import './Registration.css'
 
-function App() {
+function Registration() {
 
   const [auth, setAuth] = useState({
     name: '',
@@ -60,6 +60,7 @@ function App() {
   const handleForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleValidation()) {
+      localStorage.setItem("auth_react_app", JSON.stringify(auth));
       clearForm()
       setSuccess(true)
     }
@@ -134,4 +135,4 @@ function App() {
   )
 }
 
-export default App
+export default Registration
