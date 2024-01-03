@@ -9,7 +9,7 @@ function Profile() {
   
   useEffect(() => {
     if (localStorage.length > 0) {
-      setUser(JSON.parse(localStorage.getItem("auth_react_app") as string)) 
+      setUser(JSON.parse(sessionStorage.getItem("auth_react_app") as string)) 
     }
     }, [])
   
@@ -21,6 +21,7 @@ function Profile() {
         <p>{user.email}</p>
       </>
       }
+      <a href="#">Edit</a>
     </>
     )
 }

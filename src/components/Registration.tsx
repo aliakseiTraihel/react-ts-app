@@ -1,7 +1,11 @@
 import {useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import './Registration.css'
 
 function Registration() {
+
+  const navigate = useNavigate();
 
   const [auth, setAuth] = useState({
     name: '',
@@ -60,9 +64,10 @@ function Registration() {
   const handleForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleValidation()) {
-      localStorage.setItem("auth_react_app", JSON.stringify(auth));
+      sessionStorage.setItem("auth_react_app", JSON.stringify(auth));
       clearForm()
       setSuccess(true)
+      navigate('/profile');
     }
   }
 

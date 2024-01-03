@@ -10,11 +10,23 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
+import Root from "./components/Root.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Registration />,
-    errorElement: <ErrorPage />
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "registration",
+        element: <Registration />,
+      },
+      {
+        path: "profile",
+        element: <Profile />
+      }
+   ],
   },
   {
     path: "/profile",

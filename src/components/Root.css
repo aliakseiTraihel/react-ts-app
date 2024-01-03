@@ -1,0 +1,11 @@
+#root {
+    display: flex;
+}
+
+#sidebar {
+    flex: 1;
+}
+
+#root-container {
+    flex: 6;
+}
