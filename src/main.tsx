@@ -1,8 +1,8 @@
 import './index.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Registration from './components/Registration.tsx'
-import Profile from "./components/Profile.tsx";
+import Registration from './components/registration/Registration.tsx'
+import Profile from "./components/profile/Profile.tsx";
 import ErrorPage from "./ErrorPage.tsx"
 
 import {
