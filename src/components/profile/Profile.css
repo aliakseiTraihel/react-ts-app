@@ -1,0 +1,33 @@
+.edit-button, .save-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.edit-button:hover, .save-button:hover {
+    opacity: 1;
+}
+
+.profile {
+    display: flex;
+    justify-content: center;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 15px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+}

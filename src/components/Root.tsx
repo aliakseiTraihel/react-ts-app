@@ -15,7 +15,7 @@ function Root() {
                         <li>
                             <Link to={'profile'}>Profile</Link>
                         </li>
-                    </ul>     
+                    </ul>
                 </nav>
             </div>
             <div id="root-container">

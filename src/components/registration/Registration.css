@@ -5,6 +5,49 @@
   text-align: center;
 }
 
-.form div {
+.registration-form {
+  display: flex;
+  justify-content: center;
+}
+
+.registration-form div {
+  width: 100%;
   margin: 10px;
+}
+
+.registration-form p {
+  margin: 0;
+}
+
+input[type=text], input[type=password], input[type=email] {
+  width: 100%;
+  padding: 15px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  box-sizing: border-box;
+}
+
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+label.name {
+  margin-left: 10px;
+}
+
+.submit-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.submit-button:hover {
+  opacity: 1;
 }

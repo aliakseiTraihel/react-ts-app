@@ -1,4 +1,5 @@
 import {useEffect, useState} from "react";
+import './Profile.css'
 
 function Profile() {
 
@@ -23,35 +24,38 @@ function Profile() {
     }, [])
   
   return (
-    <>
+    <div className="profile">
+      <div>
       <h1>Profile</h1>
       {user && <>
         {
           editMode ?
           <>
-              <form noValidate className="form" onSubmit={handleForm}>
+              <form noValidate className="edit-form" onSubmit={handleForm}>
                 <div>
                   <label htmlFor="name">
                     Name:&nbsp;
                     <input required name="name"
+                      type="text"
                       defaultValue={user.name}
                       placeholder="name" />
                   </label>
                 </div>
                 <div>
-                  <button type="submit">Save</button>
+                  <button type="submit" className="save-button">Save</button>
                 </div>
               </form>
           </> :
           <>
             <p>{user.name}</p>
             <p>{user.email}</p>
-            <button onClick={() => setEditMode(true)}>Edit</button>
+            <button onClick={() => setEditMode(true)} className="edit-button">Edit</button>
           </>
         }
       </>
       }
-    </>
+      </div>
+    </div>
     )
 }
 

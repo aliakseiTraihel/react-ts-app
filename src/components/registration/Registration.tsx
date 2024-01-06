@@ -81,13 +81,14 @@ function Registration() {
   }
 
   return (
-    <div>
-      <form noValidate className="form" onSubmit={handleForm}>
+    <div className="registration-form">
+      <form noValidate onSubmit={handleForm}>
         <div>
           <label htmlFor="name">
             Name:&nbsp;
             <input onChange={(e) => setAuth({...auth, name: e.target.value})} required
             ref={nameRef}
+            type="text"
             name="name"
             value={auth.name}
             placeholder="name" />
@@ -133,7 +134,7 @@ function Registration() {
         </div>
         {success && <p style={{ color: 'green' }}>Submited</p>}
         <div>
-          <button disabled={!auth.accept} type="submit">Submit</button>
+          <button disabled={!auth.accept} type="submit" className="submit-button">Submit</button>
         </div>
       </form>
     </div>
