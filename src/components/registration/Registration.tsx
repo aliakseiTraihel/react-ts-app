@@ -20,8 +20,6 @@ function Registration() {
     password: ''
   });
 
-  const [success, setSuccess] = useState(false);
-
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -66,7 +64,6 @@ function Registration() {
     if (handleValidation()) {
       sessionStorage.setItem("auth_react_app", JSON.stringify(auth));
       clearForm()
-      setSuccess(true)
       navigate('/profile');
     }
   }
@@ -122,9 +119,8 @@ function Registration() {
         <div>
           <label htmlFor="accept">
             Accept Terms:&nbsp;
-            <input onChange={(e) => {
-              setSuccess(false)
-              setAuth({...auth, accept: e.target.checked})}
+            <input onChange={(e) => 
+              setAuth({...auth, accept: e.target.checked})
             } required
             type="checkbox"
             checked={auth.accept}
@@ -132,7 +128,6 @@ function Registration() {
             id="accept"/>
           </label>
         </div>
-        {success && <p style={{ color: 'green' }}>Submited</p>}
         <div>
           <button disabled={!auth.accept} type="submit" className="submit-button">Submit</button>
         </div>
