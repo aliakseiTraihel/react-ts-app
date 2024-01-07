@@ -82,7 +82,7 @@ function Registration() {
       <form noValidate onSubmit={handleForm}>
         <div>
           <label htmlFor="name">
-            Name:&nbsp;
+            <p>Name:&nbsp;</p>
             <input onChange={(e) => setAuth({...auth, name: e.target.value})} required
             ref={nameRef}
             type="text"
@@ -94,7 +94,7 @@ function Registration() {
         </div>
         <div>
           <label htmlFor="email">
-            Email:&nbsp;
+            <p>Email:&nbsp;</p>
             <input onChange={(e) => setAuth({...auth, email: e.target.value})} required
             ref={emailRef}
             type="email"
@@ -106,7 +106,7 @@ function Registration() {
         </div>
         <div>
           <label htmlFor="password">
-            Password:&nbsp;
+            <p>Password:&nbsp;</p>
             <input onChange={(e) => setAuth({...auth, password: e.target.value})} required
             ref={passwordRef}
             type="password"
