@@ -35,7 +35,7 @@ function Profile() {
               <form noValidate className="edit-form" onSubmit={handleForm}>
                 <div>
                   <label htmlFor="name">
-                    Name:&nbsp;
+                    <p>Name:&nbsp;</p>
                     <input required name="name"
                       type="text"
                       defaultValue={user.name}
