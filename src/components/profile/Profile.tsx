@@ -15,6 +15,7 @@ function Profile() {
     const dataObject = Object.fromEntries(formData);
     setUser({...user, ...dataObject})
     setEditMode(false)
+    event.target.reset();
   }
 
   useEffect(() => {

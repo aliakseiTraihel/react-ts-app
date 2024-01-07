@@ -13,7 +13,6 @@ body {
 #sidebar {
     flex: 1;
     padding-top: 20px;
-    box-shadow: 1px 0 0 0 gray;
 }
 
 #root-container {
@@ -36,6 +35,10 @@ nav a {
     padding: 10px;
     text-align: center;
     line-height: 25px;
-    color: black;
+    color: gray;
     font-weight: bold;
+}
+
+a:hover {
+    color: black;
 }
