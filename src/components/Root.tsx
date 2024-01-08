@@ -1,8 +1,15 @@
 import './Root.css'
 
 import { Outlet, Link } from "react-router-dom";
+import {useEffect, useState} from "react";
 
 function Root() {
+
+    const [path, setPath] = useState('');
+
+    useEffect(()=>{
+        setPath(window.location.pathname)
+    },[]);
 
     return (
         <>
@@ -10,10 +17,17 @@ function Root() {
                 <nav>
                     <ul>
                         <li>
-                            <Link to={'registration'}>Registration</Link>
+                            <Link to={'registration'}
+                                className={path == '/registration' ? 'active' : ''}
+                                onClick={() => setPath('/registration')}>
+                                Registration
+                            </Link>
                         </li>
                         <li>
-                            <Link to={'profile'}>Profile</Link>
+                            <Link to={'profile'}
+                                className={path == '/profile' ? 'active' : ''}
+                                onClick={() => setPath('/profile')}>
+                                Profile</Link>
                         </li>
                     </ul>
                 </nav>

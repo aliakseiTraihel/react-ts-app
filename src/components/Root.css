@@ -28,6 +28,10 @@ nav li{
     margin: 10px 0;
 }
 
+nav li .active {
+    color: black;
+}
+
 nav a {
     display: block;
     text-decoration: none;
