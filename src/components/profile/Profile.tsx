@@ -19,7 +19,7 @@ function Profile() {
   }
 
   useEffect(() => {
-      if (localStorage.length > 0) {
+      if (sessionStorage.length > 0) {
         setUser(JSON.parse(sessionStorage.getItem("auth_react_app") as string))
       }
     }, [])
