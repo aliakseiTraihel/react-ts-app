@@ -28,7 +28,7 @@ function Profile() {
     <div className="profile">
       <div>
       <h1>Profile</h1>
-      {user && <>
+      {user && user.name && <>
         {
           editMode ?
           <>
