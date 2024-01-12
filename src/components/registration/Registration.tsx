@@ -78,8 +78,8 @@ function Registration() {
   }
 
   return (
-    <div className="registration-form">
-      <form noValidate onSubmit={handleForm}>
+    <div className="registration">
+      <form className="registration-form" noValidate onSubmit={handleForm}>
         <div>
           <label htmlFor="name">
             <p>Name:&nbsp;</p>

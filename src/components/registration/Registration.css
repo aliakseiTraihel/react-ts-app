@@ -5,21 +5,21 @@
   text-align: center;
 }
 
-form {
+.registration-form {
   width: 300px;
 }
 
-.registration-form {
+.registration {
   display: flex;
   justify-content: center;
 }
 
-.registration-form div {
+.registration div {
   width: 100%;
   margin: 10px;
 }
 
-.registration-form p {
+.registration p {
   margin: 0;
 }
 
