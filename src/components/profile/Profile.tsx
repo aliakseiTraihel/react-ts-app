@@ -48,6 +48,7 @@ function Profile() {
                   <label htmlFor="name">
                     <p>Name:&nbsp;</p>
                     <input required name="name"
+                      id="name"
                       type="text"
                       defaultValue={user.name}
                       placeholder="name" />
@@ -57,6 +58,7 @@ function Profile() {
                   <label htmlFor="birth">
                     <p>Date of Birth:&nbsp;</p>
                     <input required name="birth"
+                      id="birth"
                       type="date"
                       defaultValue={user.birth}
                       placeholder="birth" />

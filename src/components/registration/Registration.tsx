@@ -85,6 +85,7 @@ function Registration() {
             <p>Name:&nbsp;</p>
             <input onChange={(e) => setAuth({...auth, name: e.target.value})} required
             ref={nameRef}
+            id="name"  
             type="text"
             name="name"
             value={auth.name}
@@ -97,6 +98,7 @@ function Registration() {
             <p>Email:&nbsp;</p>
             <input onChange={(e) => setAuth({...auth, email: e.target.value})} required
             ref={emailRef}
+            id="email"
             type="email"
             name="email"
             value={auth.email}
@@ -109,6 +111,7 @@ function Registration() {
             <p>Password:&nbsp;</p>
             <input onChange={(e) => setAuth({...auth, password: e.target.value})} required
             ref={passwordRef}
+            id="password"
             type="password"
             name="password"
             value={auth.password}
