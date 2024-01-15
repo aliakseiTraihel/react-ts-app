@@ -1,5 +1,7 @@
 import {useEffect, useReducer, useState} from "react";
 import {reducer, ActionType} from "./Reducer.tsx";
+import Modal from "../modal/Modal.tsx";
+import {getUserData, updateUserData} from "../../storage/Storage.tsx";
 
 import './Profile.css'
 
@@ -17,32 +19,29 @@ function Profile() {
   const handleForm = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.target);
-    const dataObject = Object.fromEntries(formData);
-    setUser({...user, ...dataObject})
+    const dataObject = {...user, ...Object.fromEntries(formData)};
+
+    setUser(dataObject)
+    updateUserData(dataObject)
     dispatch({type: ActionType.HIDE})
+
     event.target.reset();
   }
 
   useEffect(() => {
-      if (sessionStorage.length > 0 && sessionStorage.getItem("auth_react_app") != null) {
-        setUser(JSON.parse(sessionStorage.getItem("auth_react_app") as string))
-      }
+      const userData = getUserData()
+      userData && setUser(userData);
     }, [])
   
   if (!(user && user.name)) {
-    return (<h3>User not find</h3>)
+    return (<h3>User not found</h3>)
   }
 
   return (
     <div className="profile">
         <h1>Profile</h1>
         { state.show &&
-          <div className="modal">
-            <div className="modal-content">
-              <div className="modal-content_top">
-                <button onClick={() => dispatch({type: ActionType.HIDE})}>X</button>
-                <h2>Modal Window</h2>
-              </div>
+           <Modal show={state.show} onClose={() => dispatch({type: ActionType.HIDE})}>
               <form noValidate className="edit-form" onSubmit={handleForm}>
                 <div>
                   <label htmlFor="name">
@@ -77,8 +76,7 @@ function Profile() {
                    <button type="submit" className="save-button">Save</button>
                  </div>
                </form>
-             </div>
-            </div>
+         </Modal>
         }
         <div className="user-info">
           <p>{user.name}</p>

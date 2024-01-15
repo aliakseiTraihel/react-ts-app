@@ -1,5 +1,6 @@
 import {useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {setUserData} from "../../storage/Storage.tsx";
 
 import './Registration.css'
 
@@ -62,7 +63,7 @@ function Registration() {
   const handleForm = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (handleValidation()) {
-      sessionStorage.setItem("auth_react_app", JSON.stringify(auth));
+      setUserData(auth)
       clearForm()
       navigate('/profile');
     }
