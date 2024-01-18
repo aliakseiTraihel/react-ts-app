@@ -1,12 +1,14 @@
-import {useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {setUserData} from "../../storage/Storage.tsx";
+import { setUserData } from "../../storage/Storage.tsx";
+import { ThemeContext } from '../../context/Contexts.tsx';
 
 import './Registration.css'
 
 function Registration() {
 
   const navigate = useNavigate();
+  const theme = useContext(ThemeContext)
 
   const [auth, setAuth] = useState({
     name: '',
