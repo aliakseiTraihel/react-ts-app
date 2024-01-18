@@ -1,14 +1,11 @@
-import {useContext, useEffect, useReducer, useState} from "react";
+import {useEffect, useReducer, useState} from "react";
 import {reducer, ActionType} from "./Reducer.tsx";
 import Modal from "../modal/Modal.tsx";
 import {getUserData, updateUserData} from "../../storage/Storage.tsx";
-import { ThemeContext } from "../../context/Contexts.tsx";
 
 import './Profile.css'
 
 function Profile() {
-
-  const theme = useContext(ThemeContext)
 
   const [user, setUser] = useState({
     name: '',
