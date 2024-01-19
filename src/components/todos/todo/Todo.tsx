@@ -1,7 +1,12 @@
 import { TodoInterface } from "../../redux/Reducer";
 
 function Todo({todo}) {
-  return (<h3>{todo.text}</h3>);
+  return (
+    <div className="todo">
+      <span>{todo.text}</span>
+      <span>{todo.status}</span>
+    </div>
+  );
 }
 
 export default Todo;
