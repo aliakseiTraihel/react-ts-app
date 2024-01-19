@@ -1,6 +1,6 @@
 import { TodoInterface } from "../../redux/Reducer";
 
-function Todo({todo: TodoInterface}) {
+function Todo({todo}) {
   return (<h3>{todo.text}</h3>);
 }
 
