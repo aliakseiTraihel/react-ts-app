@@ -3,7 +3,9 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Registration from './components/registration/Registration.tsx'
 import Profile from "./components/profile/Profile.tsx";
+import TodoList from "./components/todos/TodoList.tsx";
 import ErrorPage from "./ErrorPage.tsx"
+import store from "./redux/Store.tsx"
 
 import {
   createBrowserRouter,
@@ -11,6 +13,7 @@ import {
 } from "react-router-dom";
 
 import Root from "./components/Root.tsx";
+import {Provider} from "react-redux";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: "profile",
         element: <Profile />
+      },
+      {
+        path: "todos",
+        element: <TodoList />
       }
    ],
   }
@@ -32,6 +39,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )

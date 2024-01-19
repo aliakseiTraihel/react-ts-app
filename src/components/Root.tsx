@@ -1,13 +1,15 @@
 import './Root.css'
 
-import { Outlet, Link } from "react-router-dom";
+import { Link, useOutlet } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ThemeContext } from '../context/Contexts';
 
 function Root() {
 
+    const outlet = useOutlet()
+
     const [path, setPath] = useState('');
-    const [theme, setTheme] = useState('dark')
+    const [theme, setTheme] = useState('light')
 
     useEffect(()=>{
         setPath(window.location.pathname)
@@ -35,11 +37,17 @@ function Root() {
                                 onClick={() => setPath('/profile')}>
                                 Profile</Link>
                         </li>
+                        <li>
+                            <Link to={'todos'}
+                                className={path == '/todos' ? 'active' : ''}
+                                onClick={() => setPath('/todos')}>
+                                Todos</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>
             <div id="root-container" className={`${theme}-theme-specific`}>
-                <Outlet />
+                {outlet || <h1>Hello</h1>}
             </div>
         </ThemeContext.Provider>
     )
