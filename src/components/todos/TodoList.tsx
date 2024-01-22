@@ -10,21 +10,21 @@ const mapDispatchToProps = { addTodo };
 
 function TodoList({todos, addTodo}: {todos?: Array<TodoInterface>, addTodo?: (todo: TodoInterface)=>void}) {
 
-  const todo = useRef<HTMLInputElement>(null);
+  const todoRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => {
-    if (todo.current) {
+    if (todoRef.current) {
       addTodo && addTodo({
         id: Math.floor(Math.random() * 1000).toString(),
         status: "active",
-        text: todo.current.value
+        text: todoRef.current.value
       })
-      todo.current.value = '';
+      todoRef.current.value = '';
     }
   }
 
   if (!todos) {
-    return <></>;
+    return (<h3>Todos not found</h3>)
   }
 
   return (<div className="todo-list">
@@ -32,7 +32,7 @@ function TodoList({todos, addTodo}: {todos?: Array<TodoInterface>, addTodo?: (to
         todos && todos.map((todo: TodoInterface) =><Todo key={todo.id} todo={todo}/>)
     }</div>
     <div className="todo-list_add">
-      <input ref={todo}/>
+      <input ref={todoRef}/>
       <button onClick={handleClick} className="addTodo">add</button>
     </div>
   </div>);
