@@ -13,7 +13,7 @@ export interface TodoState {
 const initialState = {
   todos: [
     {'id': '1', 'text': 'first', 'status': 'active'},
-    {'id': '2', 'text': 'second', 'status': 'active'},
+    {'id': '2', 'text': 'second', 'status': 'done'},
     {'id': '3', 'text': 'third', 'status': 'active'}
   ]
 } as TodoState;
