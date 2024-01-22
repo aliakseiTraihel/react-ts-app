@@ -28,7 +28,7 @@ export const todoSlice  = createSlice({
       return state;
     },
     onEdit: (state, action) => {
-      state.todos.map((todo) => {
+      state.todos = [ ...state.todos.map((todo) => {
         if (todo.id === action.payload.id) {
           console.log(action.payload)
           return {
@@ -36,15 +36,11 @@ export const todoSlice  = createSlice({
           };
         }
         return todo;
-      });
+      })]
       return state;
     },
     onDelete: (state, action) => {
-      console.log(action.payload.id)
-      state.todos.filter((item) => {
-        console.log(item.id !== action.payload.id)
-        item.id !== action.payload.id;
-      });
+      state.todos = [...state.todos.filter((todo) => todo.id !== action.payload.id)]
       return state;
     }
   }

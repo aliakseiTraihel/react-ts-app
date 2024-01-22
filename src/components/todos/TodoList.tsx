@@ -1,3 +1,5 @@
+import "./TodoList.css";
+
 import Todo from "./todo/Todo.tsx";
 import { connect } from "react-redux";
 import { useRef } from "react";
@@ -25,11 +27,12 @@ function TodoList({todos, addTodo}: {todos?: Array<TodoInterface>, addTodo?: (to
     return <></>;
   }
 
-  return (<div className="todo-list">{
-    todos.map((todo: TodoInterface) =><Todo key={todo.id} todo={todo}/>)
-  }
-    <div>
-      <input type="text" ref={todo}/>
+  return (<div className="todo-list">
+    <div className="todo-list_items">{
+        todos && todos.map((todo: TodoInterface) =><Todo key={todo.id} todo={todo}/>)
+    }</div>
+    <div className="todo-list_add">
+      <input ref={todo}/>
       <button onClick={handleClick} className="addTodo">add</button>
     </div>
   </div>);

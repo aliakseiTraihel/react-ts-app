@@ -1,0 +1,16 @@
+.todo-list {
+  width: 300px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.todo-list .todo-list_items {
+  width: 300px;
+  margin: auto;
+}
+
+.todo-list_add {
+  margin-top: 20px;
+}
