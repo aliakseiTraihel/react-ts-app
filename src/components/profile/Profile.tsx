@@ -1,7 +1,7 @@
-import {useEffect, useReducer, useState} from "react";
-import {reducer, ActionType} from "./Reducer.tsx";
 import Modal from "../modal/Modal.tsx";
-import {getUserData, updateUserData} from "../../storage/Storage.tsx";
+import { useEffect, useReducer, useState } from "react";
+import { reducer, ActionType } from "./Reducer.tsx";
+import { getUserData, updateUserData } from "../../storage/Storage.tsx";
 
 import './Profile.css'
 

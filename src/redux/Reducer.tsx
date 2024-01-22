@@ -1,4 +1,4 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface TodoInterface {
   id: string,
@@ -12,9 +12,9 @@ export interface TodoState {
 
 const initialState = {
   todos: [
-    {'id': '1', 'text': 'first', 'status': 'create'},
-    {'id': '2', 'text': 'second', 'status': 'create'},
-    {'id': '3', 'text': 'third', 'status': 'create'}
+    {'id': '1', 'text': 'first', 'status': 'active'},
+    {'id': '2', 'text': 'second', 'status': 'active'},
+    {'id': '3', 'text': 'third', 'status': 'active'}
   ]
 } as TodoState;
 
@@ -25,9 +25,30 @@ export const todoSlice  = createSlice({
     addTodo: (state, action)=>{
       const todo = action.payload;
       state.todos.push(todo);
+      return state;
+    },
+    onEdit: (state, action) => {
+      state.todos.map((todo) => {
+        if (todo.id === action.payload.id) {
+          console.log(action.payload)
+          return {
+            ...action.payload
+          };
+        }
+        return todo;
+      });
+      return state;
+    },
+    onDelete: (state, action) => {
+      console.log(action.payload.id)
+      state.todos.filter((item) => {
+        console.log(item.id !== action.payload.id)
+        item.id !== action.payload.id;
+      });
+      return state;
     }
   }
 })
 
-export const {addTodo} = todoSlice.actions;
+export const {addTodo, onEdit, onDelete} = todoSlice.actions;
 export default todoSlice.reducer;

@@ -1,6 +1,6 @@
 import { ThemeContext } from "../../context/Contexts";
 import "./Modal.css"
-import {useContext} from "react";
+import { useContext } from "react";
 
 interface ModalProps {
   show: boolean,
