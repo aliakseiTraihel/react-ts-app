@@ -44,7 +44,7 @@ function Todo({todo, onEdit, onDelete}: TodoProps) {
   return (
     <div className="todo">
       <div className="todo_status">
-        <button onClick={handleStatus}>{todo.status === "active" ? "done" : "activate"}</button>
+        <button disabled={edit} onClick={handleStatus}>{todo.status === "active" ? "done" : "activate"}</button>
       </div>
       <div className="todo_text" style={{'textDecoration' : todo.status === "active" ? 'none' : 'line-through'}}>
         {edit ?

@@ -28,15 +28,9 @@ export const todoSlice  = createSlice({
       return state;
     },
     onEdit: (state, action) => {
-      state.todos = [ ...state.todos.map((todo) => {
-        if (todo.id === action.payload.id) {
-          console.log(action.payload)
-          return {
-            ...action.payload
-          };
-        }
-        return todo;
-      })]
+      state.todos = [ ...state.todos.map((todo) =>
+        todo.id === action.payload.id ? { ...action.payload } : todo
+      )]
       return state;
     },
     onDelete: (state, action) => {
