@@ -13,4 +13,14 @@
 
 .todo-list_add {
   margin-top: 20px;
+  display: flex;
+}
+
+.todo-list_add input{
+  height: 30px;
+  margin: 0 5px;
+}
+
+.todo-list_add button{
+  height: 30px;
 }

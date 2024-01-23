@@ -32,8 +32,8 @@ function TodoList({todos, addTodo}: {todos?: Array<TodoInterface>, addTodo?: (to
         todos && todos.map((todo: TodoInterface) =><Todo key={todo.id} todo={todo}/>)
     }</div>
     <div className="todo-list_add">
-      <input ref={todoRef}/>
-      <button onClick={handleClick} className="addTodo">add</button>
+      <input type="text" ref={todoRef}/>
+      <button onClick={handleClick} className="addTodo">➕</button>
     </div>
   </div>);
 }

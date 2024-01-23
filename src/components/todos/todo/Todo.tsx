@@ -42,28 +42,28 @@ function Todo({todo, onEdit, onDelete}: TodoProps) {
   }
 
   return (
-    <div className="todo">
-      <div className="todo_status">
-        <button disabled={edit} onClick={handleStatus}>{todo.status === "active" ? "done" : "activate"}</button>
+    <div className="todo-item">
+      <div className="todo-item_status">
+        <input disabled={edit} type="checkbox" defaultChecked={todo.status !== "active"} onClick={handleStatus} />
       </div>
-      <div className="todo_text" style={{'textDecoration' : todo.status === "active" ? 'none' : 'line-through'}}>
+      <div className="todo-item_text" style={{'textDecoration' : todo.status === "active" ? 'none' : 'line-through'}}>
         {edit ?
           <input defaultValue={todo.text} ref={text} />
           :
           <span>{todo.text}</span>
         }
       </div>
-      <div className="todo_action">
+      <div className="todo-item_action">
         {todo.status === "active" ?
           <>
             {edit ?
-              <button onClick={handleSave}>save</button>
+              <button onClick={handleSave}>💾</button>
               :
-              <button onClick={() => setEdit(!edit)}>edit</button>
+              <button onClick={() => setEdit(!edit)}>✎</button>
             }
           </>
           :
-          <button onClick={handleDelete}>delete</button>
+          <button onClick={handleDelete}>✕</button>
         }
       </div>
     </div>
