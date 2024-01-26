@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import Registration from './components/registration/Registration.tsx'
 import Profile from "./components/profile/Profile.tsx";
 import TodoList from "./components/todos/TodoList.tsx";
+import Universities from "./components/custom/Universities.tsx"
 import ErrorPage from "./ErrorPage.tsx"
 import store from "./redux/Store.tsx"
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "todos",
         element: <TodoList />
+      },
+      {
+        path: "universities",
+        element: <Universities />
       }
    ],
   }
