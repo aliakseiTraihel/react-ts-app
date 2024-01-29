@@ -16,3 +16,7 @@
   margin: 5px 0;
   text-align: start;
 }
+
+.universitetes-error {
+  color: red;
+}
