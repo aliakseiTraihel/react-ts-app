@@ -9,19 +9,19 @@ export function useFetch(size: number) {
   
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [state, setRegion] = useState('');
+  const [region, setRegion] = useState('');
   const [error, setError] = useState('');
   
   useEffect(() => {
     error && setError('');
-    if (!state) {
+    if (!region) {
       setData([])
       return;
     }
     (async function() {
       setLoading(true);
       try {
-        const response = await fetch("http://universities.hipolabs.com/search?country=" + state);
+        const response = await fetch("http://universities.hipolabs.com/search?country=" + region);
         const data = await response.json();
         data && setData(data.slice(0, size));
       } catch (error) {
@@ -31,7 +31,7 @@ export function useFetch(size: number) {
       }
       setLoading(false);
     })();
-  }, [state])
+  }, [region])
   
   return {data, loading, setRegion, error} as {data: Array<Universitate>, loading: boolean, setRegion: React.Dispatch<React.SetStateAction<string>>, error: string};
 }

@@ -7,7 +7,7 @@ function Universities() {
   return(<div className="universitetes">
     <div className="universitetes-select">
       <select name="select" defaultValue="" onChange={event => setRegion(event.target.value)}>
-        <option value=''>Choose here</option>
+        <option value=''>Choose region</option>
         <option value="United+States">United States</option>
         <option value="Poland">Poland</option>
         <option value="Germany">Germany</option>
