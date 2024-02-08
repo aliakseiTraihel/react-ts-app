@@ -5,6 +5,7 @@ import Registration from './components/registration/Registration.tsx'
 import Profile from "./components/profile/Profile.tsx";
 import TodoList from "./components/todos/TodoList.tsx";
 import Universities from "./components/custom/Universities.tsx"
+import Tasks from "./components/tasks/Tasks.tsx";
 import ErrorPage from "./ErrorPage.tsx"
 import store from "./redux/Store.tsx"
 
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "universities",
         element: <Universities />
+      },
+      {
+        path: "tasks",
+        element: <Tasks />
       }
    ],
   }

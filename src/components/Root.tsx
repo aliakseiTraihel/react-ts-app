@@ -49,6 +49,12 @@ function Root() {
                                 onClick={() => setPath('/universities')}>
                                 Universities</Link>
                         </li>
+                        <li>
+                            <Link to={'tasks'}
+                                className={path == '/tasks' ? 'active' : ''}
+                                onClick={() => setPath('/tasks')}>
+                                Tasks</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>
