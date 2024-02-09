@@ -1,6 +1,6 @@
 import './Tasks.css'
 import Task from "./Task.tsx";
-import {useCallback, useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 
 const init: Task[] = [
   {text: 'Send email', active: true},
@@ -15,11 +15,14 @@ interface Selected {
 function Tasks(){
   
   const [ todos, setTodos ] = useState<Task[]>([]);
-  const [ selected, setSelected] = useState<Selected>([]);
+  const [ selected, setSelected] = useState<Selected>();
   
-  const handleCallback = useCallback((task: Task, unselect: () => void) => {
+  const handleCallback = (task: Task, unselect: () => void) => {
+    if (selected) {
+      selected.unselect();
+    }
     setSelected({task: task, unselect: unselect});
-  }, []);
+  };
   
   const handlePress = (e: KeyboardEvent) => {
     if (!selected) {
