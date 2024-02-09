@@ -6,14 +6,14 @@ interface Task {
   active: boolean
 }
 
-function Task({task, callback}: {task: Task, callback: (task: Task) => void}) {
+function Task({task, callback}: {task: Task, callback: (task: Task, unselect: () => void) => void}) {
 
   const [selected, setSelected] = useState(false)
 
   const handleOnClick = () => {
     setSelected(!selected);
     (function () {
-      callback(task)
+      callback(task, () => setSelected(false))
     })()
   }
 

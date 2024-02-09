@@ -3,17 +3,22 @@ import Task from "./Task.tsx";
 import {useCallback, useEffect, useState} from 'react';
 
 const init: Task[] = [
-  {text: 'Send work email', active: true},
+  {text: 'Send email', active: true},
   {text: 'Modify task', active: false}
 ]
+
+interface Selected {
+  task: Task,
+  unselect: () => void
+}
 
 function Tasks(){
   
   const [ todos, setTodos ] = useState<Task[]>([]);
-  const [ selected, setSelected] = useState<Task>();
+  const [ selected, setSelected] = useState<Selected>([]);
   
-  const handleCallback = useCallback((task: Task) => {
-    setSelected(task);
+  const handleCallback = useCallback((task: Task, unselect: () => void) => {
+    setSelected({task: task, unselect: unselect});
   }, []);
   
   const handlePress = (e: KeyboardEvent) => {
@@ -23,13 +28,15 @@ function Tasks(){
 
     switch (e.code) {
       case "ArrowRight":
-        if (selected.active) {
-          modify({...selected, active: false});
+        if (selected.task.active) {
+          modify({...selected.task, active: false});
+          selected.unselect();
         }
         break;
       case "ArrowLeft":
-        if (!selected.active) {
-          modify({...selected, active: true});
+        if (!selected.task.active) {
+          modify({...selected.task, active: true});
+          selected.unselect();
         }
         break;
       default:
