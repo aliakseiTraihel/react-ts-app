@@ -3,8 +3,8 @@ import Task from "./Task.tsx";
 import {useCallback, useEffect, useState} from 'react';
 
 const init: Task[] = [
-  {text: 'first', active: true},
-  {text: 'second', active: false}
+  {text: 'Send work email', active: true},
+  {text: 'Modify task', active: false}
 ]
 
 function Tasks(){
@@ -24,12 +24,12 @@ function Tasks(){
     switch (e.code) {
       case "ArrowRight":
         if (selected.active) {
-          setTodos([...todos, {...selected, active: false}]);
+          modify({...selected, active: false});
         }
         break;
       case "ArrowLeft":
         if (!selected.active) {
-          setTodos([...todos, {...selected, active: true}]);
+          modify({...selected, active: true});
         }
         break;
       default:
@@ -47,6 +47,10 @@ function Tasks(){
   useEffect(() => {
     setTodos(init)
   }, [])
+
+  const modify = (task: Task) => {
+    setTodos([...todos.filter(item => item.text != task.text), task])
+  }
 
   return (
     <div className="task-container">
