@@ -2,6 +2,7 @@ import './Task.css'
 import {useState} from "react";
 
 interface Task {
+  id: string,
   text: string,
   active: boolean
 }
@@ -13,13 +14,15 @@ function Task({task, callback}: {task: Task, callback: (task: Task, unselect: ()
   const handleOnClick = () => {
     setSelected(!selected);
     (function () {
-      callback(task, () => setSelected(false))
+      !selected ?
+      callback(task, () => setSelected(false)) :
+      callback(undefined, () => {})
     })()
   }
 
   return(
-    <div className={selected ? 'selected ' : '' + task.active ? 'active' : ''}>
-      <h3 onClick={handleOnClick}>{task.text}</h3>
+    <div onClick={handleOnClick} className={selected ? 'selected ' : '' + 'task-item'}>
+      {task.text}
     </div>
   );
 }

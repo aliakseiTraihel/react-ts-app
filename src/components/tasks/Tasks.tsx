@@ -1,10 +1,10 @@
 import './Tasks.css'
 import Task from "./Task.tsx";
-import {useEffect, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 
 const init: Task[] = [
-  {text: 'Send email', active: true},
-  {text: 'Modify task', active: false}
+  {id: "342", text: 'Send email', active: true},
+  {id: "421", text: 'Modify task', active: false}
 ]
 
 interface Selected {
@@ -15,7 +15,8 @@ interface Selected {
 function Tasks(){
   
   const [ todos, setTodos ] = useState<Task[]>([]);
-  const [ selected, setSelected] = useState<Selected>();
+  const [ selected, setSelected ] = useState<Selected>();
+  const taskRef = useRef<HTMLInputElement>(null);
   
   const handleCallback = (task: Task, unselect: () => void) => {
     if (selected) {
@@ -24,8 +25,19 @@ function Tasks(){
     setSelected({task: task, unselect: unselect});
   };
   
+  const handleAdd = () => {
+    if (taskRef.current) {
+      setTodos([...todos, {
+        id: Math.floor(Math.random() * 1000).toString(),
+        text: taskRef.current.value,
+        active: true
+      }]);
+      taskRef.current.value = '';
+    }
+  }
+
   const handlePress = (e: KeyboardEvent) => {
-    if (!selected) {
+    if (!selected || !selected.task) {
       return;
     }
 
@@ -63,9 +75,25 @@ function Tasks(){
   }
 
   return (
-    <div className="task-container">
-      <div className="active">{todos.filter(task => task.active).map((task, index) => <Task key={index} task={task} callback={handleCallback}/>)}</div>
-      <div className="done">{todos.filter(task => !task.active).map((task, index) => <Task key={index} task={task} callback={handleCallback}/>)}</div>
+    <div className="task-component">
+      <div className="task-container">
+        <div className="active">
+          <>
+          <div>Active:</div>
+          {todos.filter(task => task.active).map(task  => <Task key={task.id} task={task} callback={handleCallback}/>)}
+          </>
+        </div>
+        <div className="done">
+          <>
+          <div>Done:</div>
+          {todos.filter(task => !task.active).map(task => <Task key={task.id} task={task} callback={handleCallback}/>)}
+          </>
+        </div>
+      </div>
+      <div className="task-add">
+        <input type="text" ref={taskRef}/>
+        <button onClick={handleAdd} className="addTask">➕</button>
+      </div>
     </div>
   );
 }

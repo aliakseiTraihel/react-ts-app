@@ -2,3 +2,22 @@
     display: flex;
     justify-content: space-around;
 }
+
+.task-container div {
+    margin: 20px 0;
+}
+
+.task-container .done .task-item {
+    text-decoration: line-through;
+}
+
+.task-container .task-item  {
+    cursor: pointer;
+}
+
+.task-add {
+    display: flex;
+    width: 300px;
+    height: 30px;
+    margin: auto;
+}
