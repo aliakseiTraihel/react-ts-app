@@ -7,7 +7,7 @@ interface Task {
   active: boolean
 }
 
-function Task({task, callback}: {task: Task, callback: (task: Task, unselect: () => void) => void}) {
+function Task({task, callback}: {task: Task, callback: (task: Task | undefined, unselect: () => void) => void}) {
 
   const [selected, setSelected] = useState(false)
 

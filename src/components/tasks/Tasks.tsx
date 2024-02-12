@@ -8,7 +8,7 @@ const init: Task[] = [
 ]
 
 interface Selected {
-  task: Task,
+  task?: Task,
   unselect: () => void
 }
 
@@ -18,7 +18,7 @@ function Tasks(){
   const [ selected, setSelected ] = useState<Selected>();
   const taskRef = useRef<HTMLInputElement>(null);
   
-  const handleCallback = (task: Task, unselect: () => void) => {
+  const handleCallback = (task: Task | undefined, unselect: () => void) => {
     if (selected) {
       selected.unselect();
     }
